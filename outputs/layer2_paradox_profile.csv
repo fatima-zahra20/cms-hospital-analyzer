@@ -1,0 +1,100 @@
+facility_id,facility_name,state,hospital_type,hospital_ownership,paradox_count_by_state,paradox_count_by_ownership,paradox_count_by_type
+010023,BAPTIST MEDICAL CENTER SOUTH,AL,Acute Care Hospitals,Government - Hospital District or Authority,2,12,99
+010039,HUNTSVILLE HOSPITAL,AL,Acute Care Hospitals,Government - Hospital District or Authority,2,12,99
+040016,University of Arkansas Medical Sciences,AR,Acute Care Hospitals,Government - State,6,4,99
+040078,NATIONAL PARK MEDICAL CENTER,AR,Acute Care Hospitals,Proprietary,6,19,99
+040020,ST BERNARDS MEDICAL CENTER,AR,Acute Care Hospitals,Voluntary non-profit - Private,6,45,99
+040029,"CONWAY REGIONAL MEDICAL CENTER, INC",AR,Acute Care Hospitals,Voluntary non-profit - Private,6,45,99
+040036,BAPTIST HEALTH MEDICAL CENTER NORTH LITTLE ROCK,AR,Acute Care Hospitals,Voluntary non-profit - Private,6,45,99
+040071,JEFFERSON REGIONAL MEDICAL CENTER,AR,Acute Care Hospitals,Voluntary non-profit - Private,6,45,99
+030083,ABRAZO SCOTTSDALE CAMPUS,AZ,Acute Care Hospitals,Proprietary,2,19,99
+030006,TUCSON MEDICAL CENTER,AZ,Acute Care Hospitals,Voluntary non-profit - Private,2,45,99
+050056,ANTELOPE VALLEY HOSPITAL,CA,Acute Care Hospitals,Government - Hospital District or Authority,15,12,99
+050128,TRI-CITY MEDICAL CENTER,CA,Acute Care Hospitals,Government - Hospital District or Authority,15,12,99
+050320,HIGHLAND HOSPITAL,CA,Acute Care Hospitals,Government - Hospital District or Authority,15,12,99
+050091,COMMUNITY HOSPITAL OF HUNTINGTON PARK,CA,Acute Care Hospitals,Proprietary,15,19,99
+050298,BARSTOW COMMUNITY HOSPITAL,CA,Acute Care Hospitals,Proprietary,15,19,99
+050526,HUNTINGTON BEACH HOSPITAL,CA,Acute Care Hospitals,Proprietary,15,19,99
+050551,UCI HEALTH - LOS ALAMITOS,CA,Acute Care Hospitals,Proprietary,15,19,99
+050589,UCI HEALTH - PLACENTIA LINDA,CA,Acute Care Hospitals,Proprietary,15,19,99
+050737,GARFIELD MEDICAL CENTER,CA,Acute Care Hospitals,Proprietary,15,19,99
+050745,CHAPMAN GLOBAL MEDICAL CENTER,CA,Acute Care Hospitals,Proprietary,15,19,99
+050149,CALIFORNIA HOSPITAL MEDICAL CENTER LA,CA,Acute Care Hospitals,Voluntary non-profit - Other,15,7,99
+050411,KAISER FOUNDATION HOSPITAL - SOUTH BAY,CA,Acute Care Hospitals,Voluntary non-profit - Other,15,7,99
+050060,COMMUNITY REGIONAL MEDICAL CENTER,CA,Acute Care Hospitals,Voluntary non-profit - Private,15,45,99
+050272,REDLANDS COMMUNITY HOSPITAL,CA,Acute Care Hospitals,Voluntary non-profit - Private,15,45,99
+050704,MISSION COMMUNITY HOSPITAL,CA,Acute Care Hospitals,Voluntary non-profit - Private,15,45,99
+070002,ST FRANCIS HOSPITAL & MEDICAL CENTER,CT,Acute Care Hospitals,Voluntary non-profit - Church,1,6,99
+100022,JACKSON HEALTH SYSTEM,FL,Acute Care Hospitals,Government - Hospital District or Authority,3,12,99
+100212,MARION COMMUNTIY HOSPITAL,FL,Acute Care Hospitals,Proprietary,3,19,99
+100157,LAKELAND REGIONAL MEDICAL CENTER,FL,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+110107,ATRIUM HEALTH NAVICENT THE MEDICAL CENTER,GA,Acute Care Hospitals,Government - Hospital District or Authority,3,12,99
+110034,"WELLSTAR MCG HEALTH, AFFILIATED WITH MED COL",GA,Acute Care Hospitals,Voluntary non-profit - Other,3,7,99
+110064,PIEDMONT COLUMBUS REGIONAL MIDTOWN,GA,Acute Care Hospitals,Voluntary non-profit - Other,3,7,99
+160083,MERCYONE DES MOINES MEDICAL CENTER,IA,Acute Care Hospitals,Voluntary non-profit - Private,1,45,99
+140275,GENESIS HLTH SYSTEM DBA GENESIS MDL CTR-ILLINI,IL,Acute Care Hospitals,Government - Local,6,6,99
+140007,SAINT JOSEPH MEDICAL CENTER,IL,Acute Care Hospitals,Voluntary non-profit - Church,6,6,99
+140049,WEST SUBURBAN MEDICAL CENTER,IL,Acute Care Hospitals,Voluntary non-profit - Other,6,7,99
+140018,MT SINAI HOSPITAL MEDICAL CENTER,IL,Acute Care Hospitals,Voluntary non-profit - Private,6,45,99
+140158,INSIGHT HOSPITAL AND MEDICAL CENTER CHICAGO,IL,Acute Care Hospitals,Voluntary non-profit - Private,6,45,99
+140164,MEMORIAL HOSPITAL OF CARBONDALE,IL,Acute Care Hospitals,Voluntary non-profit - Private,6,45,99
+170013,HAYS MEDICAL CENTER,KS,Acute Care Hospitals,Voluntary non-profit - Other,2,7,99
+170012,SALINA REGIONAL HEALTH CENTER,KS,Acute Care Hospitals,Voluntary non-profit - Private,2,45,99
+180104,BAPTIST HEALTH PADUCAH,KY,Acute Care Hospitals,Voluntary non-profit - Church,7,6,99
+180013,THE MEDICAL CENTER (BOWLING GREEN),KY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+180040,UOFL HEALTH - JEWISH HOSPITAL and Mary & Elizabeth Hospital,KY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+180051,JENNIE STUART MEDICAL CENTER,KY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+180088,"NORTON HOSPITALS, INC",KY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+180093,BAPTIST HEALTH DEACONESS MADISONVILLE,KY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+180141,UNIVERSITY OF LOUISVILLE HOSPITAL,KY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+190050,BEAUREGARD MEMORIAL HOSPITAL,LA,Acute Care Hospitals,Government - Hospital District or Authority,2,12,99
+190086,NORTHERN LOUISIANA MEDICAL CENTER,LA,Acute Care Hospitals,Proprietary,2,19,99
+220175,METROWEST MEDICAL CENTER,MA,Acute Care Hospitals,Voluntary non-profit - Private,1,45,99
+200009,MAINEHEALTH MAINE MEDICAL CENTER,ME,Acute Care Hospitals,Voluntary non-profit - Private,1,45,99
+230053,HENRY FORD HEALTH HOSPITAL,MI,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+230066,TRINITY HEALTH MUSKEGON HOSPITAL,MI,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+230270,BEAUMONT HOSPITAL - TAYLOR,MI,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+260096,NORTH KANSAS CITY HOSPITAL,MO,Acute Care Hospitals,Government - Local,4,6,99
+260095,CENTERPOINT MEDICAL CENTER,MO,Acute Care Hospitals,Proprietary,4,19,99
+260200,SSM ST JOSEPH HOSPITAL WEST,MO,Acute Care Hospitals,Voluntary non-profit - Church,4,6,99
+260183,SAINT FRANCIS MEDICAL CENTER,MO,Acute Care Hospitals,Voluntary non-profit - Private,4,45,99
+250082,DELTA HEALTH SYSTEM - THE MEDICAL CENTER,MS,Acute Care Hospitals,Government - Local,4,6,99
+250001,UNIVERSITY OF MISSISSIPPI MED CENTER,MS,Acute Care Hospitals,Government - State,4,4,99
+250168,UNIVERSITY OF MISSISSIPPI MEDICAL CENTER- GRENADA,MS,Acute Care Hospitals,Government - State,4,4,99
+250004,NORTH MISSISSIPPI MEDICAL CENTER,MS,Acute Care Hospitals,Voluntary non-profit - Private,4,45,99
+340116,FRYE REGIONAL MEDICAL CENTER,NC,Acute Care Hospitals,Proprietary,3,19,99
+340028,CAPE FEAR VALLEY MEDICAL CENTER,NC,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+340047,NORTH CAROLINA BAPTIST HOSPITAL,NC,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+310083,CAREWELL HEALTH MEDICAL CENTER,NJ,Acute Care Hospitals,Proprietary,4,19,99
+310118,HUDSON REGIONAL HOSPITAL,NJ,Acute Care Hospitals,Proprietary,4,19,99
+310016,CAREPOINT HEALTH-CHRIST HOSPITAL,NJ,Acute Care Hospitals,Voluntary non-profit - Church,4,6,99
+310057,VIRTUA MOUNT HOLLY HOSPITAL,NJ,Acute Care Hospitals,Voluntary non-profit - Private,4,45,99
+320001,UNM HOSPITAL,NM,Acute Care Hospitals,Government - State,1,4,99
+330127,JACOBI MEDICAL CENTER,NY,Acute Care Hospitals,Government - Local,7,6,99
+330044,WYNN HOSPITAL,NY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+330184,MONTEFIORE NEW ROCHELLE HOSPITAL,NY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+330286,GOOD SAMARITAN HOSPITAL MEDICAL CENTER,NY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+330394,"UNITED HEALTH SERVICES HOSPITALS, INC",NY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+330395,ST JOHN'S EPISCOPAL HOSPITAL AT SOUTH SHORE,NY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+330399,ST BARNABAS HOSPITAL,NY,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+360035,MOUNT CARMEL EAST & WEST,OH,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+360159,ADENA REGIONAL MEDICAL CENTER,OH,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+360355,OHIO VALLEY SURGICAL HOSPITAL,OH,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+370089,NORTHEASTERN HEALTH SYSTEM,OK,Acute Care Hospitals,Government - Hospital District or Authority,3,12,99
+370037,SSM HEALTH ST ANTHONY HOSPITAL - OKLAHOMA CITY,OK,Acute Care Hospitals,Voluntary non-profit - Church,3,6,99
+370093,O U MEDICAL CENTER,OK,Acute Care Hospitals,Voluntary non-profit - Private,3,45,99
+380009,OHSU HOSPITAL AND CLINICS,OR,Acute Care Hospitals,Voluntary non-profit - Other,1,7,99
+390036,HERITAGE VALLEY BEAVER,PA,Acute Care Hospitals,Voluntary non-profit - Private,2,45,99
+390204,NAZARETH HOSPITAL,PA,Acute Care Hospitals,Voluntary non-profit - Private,2,45,99
+440185,AFFILIATE OF VITRUVIAN HEALTH,TN,Acute Care Hospitals,Proprietary,1,19,99
+450133,MIDLAND MEMORIAL HOSPITAL,TX,Acute Care Hospitals,Government - Hospital District or Authority,7,12,99
+450352,HUNT REGIONAL MEDICAL CENTER,TX,Acute Care Hospitals,Government - Hospital District or Authority,7,12,99
+450147,DE TAR HOSPITAL NAVARRO,TX,Acute Care Hospitals,Proprietary,7,19,99
+450222,HCA HOUSTON HEALTHCARE CONROE,TX,Acute Care Hospitals,Proprietary,7,19,99
+450713,ST DAVID'S SOUTH AUSTIN MEDICAL CENTER,TX,Acute Care Hospitals,Proprietary,7,19,99
+450011,CHI ST JOSEPH HEALTH REGIONAL HOSPITAL,TX,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+450162,GRACE SURGICAL HOSPITAL,TX,Acute Care Hospitals,Voluntary non-profit - Private,7,45,99
+500088,VALLEY MEDICAL CENTER,WA,Acute Care Hospitals,Government - Hospital District or Authority,2,12,99
+500064,HARBORVIEW MEDICAL CENTER,WA,Acute Care Hospitals,Government - Local,2,6,99
+510046,PRINCETON COMMUNITY HOSPITAL ASSN INC,WV,Acute Care Hospitals,Government - Local,2,6,99
+510022,CHARLESTON AREA MEDICAL CENTER,WV,Acute Care Hospitals,Voluntary non-profit - Private,2,45,99
