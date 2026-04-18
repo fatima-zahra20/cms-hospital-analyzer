@@ -1,0 +1,11 @@
+Dimension,Paradox Hospitals,All Other Hospitals,Verdict
+Avg Spending per Episode,"$29,059","$25,574"," +$3,485 more per patient"
+Composite Outcome Score,Negative (below 0),Positive (above 0), Consistently underperforming
+HAI Infection Rate (avg SIR),Above 1.0 on 5 of 6 measures,Below 1.0 on most measures, 2x worse than peers
+EDAC Heart Failure (excess days),12.893 days,4.918 days, 2.6x worse than peers
+EDAC Pneumonia (excess days),17.988 days,5.871 days, 3x worse than peers
+30-day Readmissions,Marginal difference,Marginal difference, Not a primary driver
+HCAHPS Star Rating,2.42 / 5,3.27 / 5, -0.85 stars lower
+Discharge Info Score,73.06,76.58, Poor discharge planning
+Hospital Type,100% Acute Care,Mixed types," Fully resourced, no excuse"
+States Most Affected,"KY 6.9%, AR 6.7%, NJ 5.1%",Distributed evenly," Smaller states, bigger problem"
