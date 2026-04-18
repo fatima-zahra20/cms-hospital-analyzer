@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMS Hospital Paradox — Fatima Zahra Boutkhil</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-200: #85B7EB;
+    --blue-400: #378ADD; --blue-600: #185FA5; --blue-800: #0C447C; --blue-900: #042C53;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-200: #B4B2A9;
+    --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441; --gray-900: #2C2C2A;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    color: var(--gray-900);
+    line-height: 1.6;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--blue-100);
+    margin-bottom: 3rem;
+  }
+  .hero-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--blue-600); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-tag::before {
+    content: ''; display: inline-block; width: 24px; height: 1px;
+    background: var(--blue-400);
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem; line-height: 1.2;
+    color: var(--blue-900); max-width: 740px; margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--blue-600); }
+  .hero-sub {
+    font-size: 16px; color: var(--gray-600);
+    line-height: 1.75; max-width: 640px; margin-bottom: 2rem;
+  }
+  .hero-meta {
+    font-size: 12px; color: var(--gray-400);
+    display: flex; gap: 2rem; flex-wrap: wrap;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── KPI row ── */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-bottom: 3rem;
+  }
+  .kpi {
+    background: var(--blue-50); border-radius: 12px;
+    padding: 1.25rem 1.5rem; border: 1px solid var(--blue-100);
+  }
+  .kpi-label {
+    font-size: 11px; color: var(--blue-600); font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .kpi-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; color: var(--blue-900); line-height: 1;
+  }
+  .kpi-sub { font-size: 12px; color: var(--blue-600); margin-top: 6px; }
+
+  /* ── Nav ── */
+  .nav {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 3rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gray-100);
+    position: sticky; top: 0; background: #fff; z-index: 10;
+    padding-top: 1rem;
+  }
+  .nav-btn {
+    padding: 7px 16px; border-radius: 24px; font-size: 12px;
+    font-weight: 500; cursor: pointer;
+    border: 1px solid var(--blue-200); background: #fff;
+    color: var(--blue-600); transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-btn:hover { background: var(--blue-50); }
+  .nav-btn.active { background: var(--blue-900); color: #fff; border-color: var(--blue-900); }
+
+  /* ── Section ── */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── Layer header ── */
+  .layer-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--blue-600); margin-bottom: 0.75rem;
+  }
+  .layer-num {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--blue-600); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 500;
+  }
+  .layer-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem; color: var(--blue-900);
+    margin-bottom: 1.25rem; line-height: 1.3;
+  }
+  .layer-body {
+    font-size: 15px; color: var(--gray-600);
+    line-height: 1.8; margin-bottom: 1.5rem; max-width: 740px;
+  }
+  .layer-body strong { color: var(--gray-900); font-weight: 500; }
+  .layer-body em { font-style: italic; color: var(--blue-700); }
+
+  /* ── Finding callout ── */
+  .finding {
+    background: var(--blue-50);
+    border-left: 3px solid var(--blue-400);
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 14px; color: var(--blue-800); line-height: 1.75;
+  }
+  .finding strong { color: var(--blue-900); font-weight: 500; }
+
+  /* ── Tables ── */
+  .table-wrap { overflow-x: auto; margin: 1.25rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead tr { background: var(--blue-900); }
+  thead th {
+    padding: 10px 14px; text-align: left;
+    color: var(--blue-50); font-weight: 500;
+    font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid var(--gray-100); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--blue-50); }
+  tbody td { padding: 10px 14px; color: var(--gray-800); }
+  tbody td strong { color: var(--gray-900); font-weight: 500; }
+
+  /* ── Badges ── */
+  .badge {
+    display: inline-block; padding: 3px 9px;
+    border-radius: 5px; font-size: 11px; font-weight: 500;
+    white-space: nowrap;
+  }
+  .badge-red { background: #FCEBEB; color: #A32D2D; }
+  .badge-yellow { background: #FAEEDA; color: #854F0B; }
+  .badge-blue { background: var(--blue-50); color: var(--blue-800); }
+  .badge-gray { background: var(--gray-50); color: var(--gray-600); }
+  .badge-green { background: #EAF3DE; color: #3B6D11; }
+
+  /* ── Two column ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1.25rem 0; }
+
+  /* ── Bar charts ── */
+  .compare-bar { margin: 10px 0; }
+  .bar-label { font-size: 12px; color: var(--gray-600); margin-bottom: 4px; }
+  .bar-track { height: 8px; background: var(--gray-100); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+  .bar-paradox { background: var(--blue-400); }
+  .bar-other { background: var(--gray-300); }
+
+  /* ── Archetype cards ── */
+  .arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1.5rem 0; }
+  .arch-card { border-radius: 12px; padding: 1.5rem; }
+  .arch-red { background: #FCEBEB; border: 1px solid #F7C1C1; }
+  .arch-green { background: #EAF3DE; border: 1px solid #C0DD97; }
+  .arch-card-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .arch-red .arch-card-tag { color: #A32D2D; }
+  .arch-green .arch-card-tag { color: #3B6D11; }
+  .arch-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; margin-bottom: 12px; }
+  .arch-red .arch-title { color: #791F1F; }
+  .arch-green .arch-title { color: #27500A; }
+  .arch-item { font-size: 13px; line-height: 2; }
+  .arch-red .arch-item { color: #791F1F; }
+  .arch-green .arch-item { color: #27500A; }
+  .arch-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+  .arch-red .arch-dot { background: #D85A30; }
+  .arch-green .arch-dot { background: #639922; }
+
+  /* ── Mechanism box ── */
+  .mechanism {
+    background: var(--blue-900); border-radius: 12px;
+    padding: 2rem; margin: 2rem 0; color: var(--blue-50);
+  }
+  .mechanism h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem; color: #fff; margin-bottom: 1.25rem;
+  }
+  .mech-step {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 12px; font-size: 13.5px; line-height: 1.6;
+  }
+  .mech-num {
+    min-width: 22px; height: 22px; border-radius: 50%;
+    background: var(--blue-600); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500; margin-top: 1px;
+  }
+  .mech-arrow {
+    text-align: center; color: var(--blue-200);
+    font-size: 16px; margin: 4px 0 4px 34px;
+  }
+
+  /* ── Section divider ── */
+  .section-divider { border: none; border-top: 1px solid var(--gray-100); margin: 2.5rem 0; }
+
+  /* ── Prose blocks ── */
+  .prose-block {
+    border-left: 3px solid var(--gray-100);
+    padding-left: 1.25rem; margin: 1.5rem 0;
+    font-size: 15px; color: var(--gray-600); line-height: 1.8;
+  }
+  .prose-block strong { color: var(--gray-900); font-weight: 500; }
+
+  /* ── Pull quote ── */
+  .pull-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem; line-height: 1.4;
+    color: var(--blue-800); max-width: 680px;
+    margin: 2rem 0; padding: 1.5rem 0;
+    border-top: 1px solid var(--blue-100);
+    border-bottom: 1px solid var(--blue-100);
+  }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 5rem; padding-top: 2rem;
+    border-top: 1px solid var(--gray-100);
+    font-size: 12px; color: var(--gray-400);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero-title { font-size: 1.8rem; }
+    .kpi-row { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 1rem 4rem; }
+    .nav { gap: 6px; }
+    .nav-btn { font-size: 11px; padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">CMS Hospital Analyzer — Portfolio Project</div>
+    <h1 class="hero-title">Why does hospital spending <em>not</em> predict clinical outcomes?</h1>
+    <p class="hero-sub">An investigation into 99 U.S. hospitals that spend above the national Medicare average — yet consistently underperform on clinical quality benchmarks set by the Centers for Medicare &amp; Medicaid Services.</p>
+    <div class="hero-meta">
+      <span>Fatima Zahra Boutkhil</span>
+      <span>Data source: CMS Hospital Compare API</span>
+      <span>8 datasets · ~4,000 hospitals · SQLite + Python</span>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-label">Paradox hospitals identified</div>
+      <div class="kpi-val">99</div>
+      <div class="kpi-sub">High spend · Poor outcome</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Spending–outcome correlation</div>
+      <div class="kpi-val">0.24</div>
+      <div class="kpi-sub">76% unexplained by money</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Excess cost per patient</div>
+      <div class="kpi-val">+$3,485</div>
+      <div class="kpi-sub">vs. all other hospitals per episode</div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <button class="nav-btn active" onclick="show('l1',this)">Layer 1 — The paradox</button>
+    <button class="nav-btn" onclick="show('l2',this)">Layer 2 — Who are they</button>
+    <button class="nav-btn" onclick="show('l3',this)">Layer 3 — Process failures</button>
+    <button class="nav-btn" onclick="show('l4',this)">Layer 4 — Patient experience</button>
+    <button class="nav-btn" onclick="show('l5',this)">Layer 5 — Synthesis</button>
+  </nav>
+
+  <!-- LAYER 1 -->
+  <div id="l1" class="section active">
+    <div class="layer-tag"><div class="layer-num">1</div>Establishing the paradox</div>
+    <h2 class="layer-title">Does higher spending produce better clinical outcomes?</h2>
+    <p class="layer-body">
+      To answer this, a composite outcome score was built from <strong>23 CMS benchmark signals</strong> across 5 clinical dimensions — mortality, patient safety, readmissions, infections, and patient experience. Each signal flags whether a hospital performs better (+1), average (0), or worse (−1) than the national rate set by CMS. The total score ranges from −23 to +23, where 0 represents perfectly average performance — not failure.
+    </p>
+    <p class="layer-body">
+      Every hospital was then classified by whether it spends above or below the national Medicare average and whether its outcome score is positive or negative. The result: <strong>a correlation of just 0.24</strong> between spending and outcomes — meaning the vast majority of what determines whether a hospital performs well has nothing to do with how much money it spends.
+    </p>
+    <div class="finding">A correlation of 0.24 means that <strong>76% of clinical outcome variation</strong> is explained by something other than money. Spending is a weak predictor at best. This is the foundation of the paradox this analysis sets out to explain.</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Quadrant</th><th>Description</th><th>Outcome score</th><th>Spending level</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="badge badge-red">Paradox zone</span></td><td>High spend · Poor outcome</td><td>Below 0</td><td>Above national average</td></tr>
+          <tr><td><span class="badge badge-blue">Efficient performer</span></td><td>Low/avg spend · Good outcome</td><td>Above 0</td><td>Below national average</td></tr>
+          <tr><td><span class="badge badge-green">Justified spender</span></td><td>High spend · Good outcome</td><td>Above 0</td><td>Above national average</td></tr>
+          <tr><td><span class="badge badge-gray">Struggling</span></td><td>Low spend · Poor outcome</td><td>Below 0</td><td>Below national average</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="layer-body" style="margin-top:1.5rem">
+      The entire analysis focuses on the <strong>paradox zone</strong> — the 99 hospitals occupying the worst possible combination. They spend above average while delivering below-average clinical outcomes across the majority of the 23 CMS benchmarks. These are not edge cases. They are a measurable, identifiable group whose failures have a financial fingerprint and a clinical cost.
+    </p>
+
+    <div class="prose-block">
+      <strong>Note on the outcome score:</strong> A score of 0 is not a bad hospital — it means performing exactly at the national average. A hospital is only flagged as a paradox case if its net signals are negative, meaning more clinical dimensions are worse than average than are better. CMS risk-adjusts its benchmark comparisons for patient population, so the score accounts for expected performance given the type of patients a hospital treats.
+    </div>
+  </div>
+
+  <!-- LAYER 2 -->
+  <div id="l2" class="section">
+    <div class="layer-tag"><div class="layer-num">2</div>Profiling the paradox hospitals</div>
+    <h2 class="layer-title">Who are these 99 hospitals?</h2>
+    <p class="layer-body">
+      Before asking why they underperform, the first question is who they are. Three dimensions were examined: <strong>state concentration, ownership type, and hospital type</strong>. The goal was to find a structural pattern — if the 99 share common characteristics, that points to a systemic explanation rather than random failure.
+    </p>
+    <p class="layer-body">
+      A common counter-argument at this stage is the <em>case mix hypothesis</em> — the idea that these hospitals spend more and perform worse because they treat more complex, sicker patients. This analysis tests that assumption at every step.
+    </p>
+
+    <hr class="section-divider">
+    <p class="layer-body" style="margin-bottom:0.75rem"><strong>State concentration</strong> — paradox hospitals as a percentage of each state's own hospital system. Raw counts are misleading; rate is what matters.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>State</th><th>Total hospitals</th><th>Paradox count</th><th>% of state system</th></tr></thead>
+        <tbody>
+          <tr><td>Kentucky</td><td>102</td><td>7</td><td><span class="badge badge-red">6.9%</span></td></tr>
+          <tr><td>Arkansas</td><td>89</td><td>6</td><td><span class="badge badge-red">6.7%</span></td></tr>
+          <tr><td>New Jersey</td><td>79</td><td>4</td><td><span class="badge badge-yellow">5.1%</span></td></tr>
+          <tr><td>Mississippi</td><td>106</td><td>4</td><td><span class="badge badge-yellow">3.8%</span></td></tr>
+          <tr><td>Missouri</td><td>121</td><td>4</td><td><span class="badge badge-yellow">3.3%</span></td></tr>
+          <tr><td>California</td><td>375</td><td>15</td><td><span class="badge badge-blue">4.0%</span></td></tr>
+          <tr><td>Texas</td><td>465</td><td>7</td><td><span class="badge badge-blue">1.5%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="finding">California has the highest raw count (15) but only 4.0% of its system. Kentucky and Arkansas have fewer in raw numbers — but nearly 1 in 15 of their hospitals is in the paradox zone. These are not major medical hubs overwhelmed by complex patients. This directly weakens the case mix counter-argument: states like Kentucky and Arkansas are not known for treating the nation's most complicated cases.</div>
+
+    <hr class="section-divider">
+    <p class="layer-body" style="margin-bottom:0.75rem"><strong>Ownership type</strong> — who owns the 99 paradox hospitals:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Ownership type</th><th>Paradox count</th><th>% of their type nationally</th></tr></thead>
+        <tbody>
+          <tr><td>Voluntary non-profit — Private</td><td>45</td><td>2.0%</td></tr>
+          <tr><td>Proprietary (for-profit)</td><td>19</td><td>1.8%</td></tr>
+          <tr><td>Government — Hospital District or Authority</td><td>12</td><td>2.3%</td></tr>
+          <tr><td>Voluntary non-profit — Church</td><td>6</td><td>2.2%</td></tr>
+          <tr><td>Government — Local</td><td>6</td><td>1.5%</td></tr>
+          <tr><td>Government — State</td><td>4</td><td>1.9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="finding">Non-profit hospitals account for <strong>58 of the 99 paradox hospitals — 58% of the group</strong>. The common assumption that for-profit hospitals are the problem does not hold. For-profit hospitals have the lowest paradox rate at 1.8%. The paradox cuts across all ownership types with rates clustered between 1.5% and 2.3% — no single type dominates. This means the explanation is not structural ownership. It lies somewhere else.</div>
+
+    <hr class="section-divider">
+    <p class="layer-body" style="margin-bottom:0.75rem"><strong>Hospital type</strong>:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Hospital type</th><th>Total in dataset</th><th>Paradox count</th><th>% of type</th></tr></thead>
+        <tbody>
+          <tr><td>Acute Care Hospitals</td><td>3,116</td><td>99</td><td><span class="badge badge-red">3.2%</span></td></tr>
+          <tr><td>Critical Access Hospitals</td><td>—</td><td>0</td><td>0%</td></tr>
+          <tr><td>All other types</td><td>—</td><td>0</td><td>0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="finding"><strong>Every single one of the 99 paradox hospitals is an Acute Care Hospital.</strong> Not one Critical Access, specialty, or other type appears in the group. Acute Care facilities are the most resourced hospital type in the U.S. system — they handle surgeries, emergencies, and complex procedures. They have the largest budgets, the most staff, and the most technology. The problem is not a lack of resources. The next layer investigates what is failing inside them.</div>
+  </div>
+
+  <!-- LAYER 3 -->
+  <div id="l3" class="section">
+    <div class="layer-tag"><div class="layer-num">3</div>Process failures</div>
+    <h2 class="layer-title">Where is the money actually going?</h2>
+    <p class="layer-body">
+      Three process dimensions were measured and compared between the 99 paradox hospitals and all other hospitals in the dataset: <strong>infection rates (HAI/SIR), 30-day readmissions, and excess acute care days (EDAC)</strong>. EDAC measures days spent in acute care beyond what is clinically expected — and CMS already risk-adjusts this measure for patient severity, which means the extended stays cannot be explained by sicker patients.
+    </p>
+
+    <hr class="section-divider">
+    <p class="layer-body" style="margin-bottom:0.75rem"><strong>Hospital-acquired infection rates</strong> — Standardized Infection Ratio (SIR). The national benchmark is 1.0. Above 1.0 means worse than expected; below 1.0 means better:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Infection measure</th><th>Paradox hospitals</th><th>All other hospitals</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>HAI-1 — CLABSI (bloodstream)</td><td>1.074</td><td>0.590</td><td><span class="badge badge-red">+82% worse</span></td></tr>
+          <tr><td>HAI-2 — CAUTI (urinary tract)</td><td>0.841</td><td>0.506</td><td><span class="badge badge-red">+66% worse</span></td></tr>
+          <tr><td>HAI-3 — SSI Colon surgery</td><td>1.386</td><td>0.831</td><td><span class="badge badge-red">+67% worse</span></td></tr>
+          <tr><td>HAI-4 — MRSA bacteremia</td><td>1.581</td><td>1.072</td><td><span class="badge badge-red">+47% worse</span></td></tr>
+          <tr><td>HAI-5 — C. difficile</td><td>1.143</td><td>0.677</td><td><span class="badge badge-red">+69% worse</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="finding">All other hospitals perform <strong>below 1.0 on most measures</strong> — better than the national average. Paradox hospitals are above 1.0 on 5 out of 6 measures. Every infection extends a patient's stay, requires additional treatment, and drives up cost. The spending is not investment. It is consequence.</div>
+
+    <hr class="section-divider">
+    <p class="layer-body" style="margin-bottom:0.75rem"><strong>Excess acute care days (EDAC)</strong> — days beyond clinically expected, already risk-adjusted for patient severity by CMS:</p>
+    <div class="two-col">
+      <div>
+        <p style="font-size:12px;color:var(--gray-600);margin-bottom:10px;font-weight:500">Heart failure patients</p>
+        <div class="compare-bar">
+          <div class="bar-label">Paradox hospitals — 12.9 days</div>
+          <div class="bar-track"><div class="bar-fill bar-paradox" style="width:86%"></div></div>
+        </div>
+        <div class="compare-bar" style="margin-top:8px">
+          <div class="bar-label">All other hospitals — 4.9 days</div>
+          <div class="bar-track"><div class="bar-fill bar-other" style="width:33%"></div></div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;color:var(--gray-600);margin-bottom:10px;font-weight:500">Pneumonia patients</p>
+        <div class="compare-bar">
+          <div class="bar-label">Paradox hospitals — 18.0 days</div>
+          <div class="bar-track"><div class="bar-fill bar-paradox" style="width:100%"></div></div>
+        </div>
+        <div class="compare-bar" style="margin-top:8px">
+          <div class="bar-label">All other hospitals — 5.9 days</div>
+          <div class="bar-track"><div class="bar-fill bar-other" style="width:33%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="finding" style="margin-top:1.25rem">Paradox hospitals generate <strong>2x to 3x more excess acute care days</strong> than their peers. Because CMS already adjusts for patient severity, these extended stays cannot be attributed to sicker patients. The failure is happening inside the hospital — in how care is delivered, how infections are prevented, and how discharge is planned.</div>
+
+    <hr class="section-divider">
+    <p class="layer-body" style="margin-bottom:0.75rem"><strong>Where the $3,485 gap goes</strong> — average Medicare payment per patient episode (prior 3 days + full stay + 30 days post-discharge):</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Spending category</th><th>Paradox hospitals</th><th>All others</th><th>Gap</th></tr></thead>
+        <tbody>
+          <tr><td>During — inpatient stay</td><td>$12,297</td><td>$11,488</td><td><span class="badge badge-red">+$809</span></td></tr>
+          <tr><td>During — physician fees</td><td>$1,513</td><td>$1,287</td><td><span class="badge badge-yellow">+$226</span></td></tr>
+          <tr><td>After — readmission to hospital</td><td>$4,932</td><td>$3,866</td><td><span class="badge badge-red">+$1,066</span></td></tr>
+          <tr><td>After — skilled nursing facility</td><td>$5,330</td><td>$4,356</td><td><span class="badge badge-red">+$974</span></td></tr>
+          <tr><td>After — home health</td><td>$689</td><td>$716</td><td><span class="badge badge-blue">−$27</span></td></tr>
+          <tr><td><strong>Total per episode</strong></td><td><strong>$29,059</strong></td><td><strong>$25,574</strong></td><td><strong>+$3,485</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="finding">The biggest cost gaps are <strong>after discharge</strong> — not during the stay. Patients leave these hospitals unstabilized. Within 30 days, they end up in skilled nursing facilities (+$974) or back in a hospital bed (+$1,066). The hospital's internal failures follow the patient out the door and keep generating costs for a full month after they leave.</div>
+  </div>
+
+  <!-- LAYER 4 -->
+  <div id="l4" class="section">
+    <div class="layer-tag"><div class="layer-num">4</div>Patient experience</div>
+    <h2 class="layer-title">Do patients feel the difference?</h2>
+    <p class="layer-body">
+      HCAHPS survey scores capture patient-reported experience across 8 dimensions — from nurse communication to discharge information. If patients in paradox hospitals rate them lower, it confirms the dysfunction is visible at every level, not just in clinical data visible only to analysts.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>Paradox hospitals</th><th>All other hospitals</th><th>Gap</th></tr></thead>
+        <tbody>
+          <tr><td>Overall star rating (1–5 scale)</td><td>2.42</td><td>3.27</td><td><span class="badge badge-red">−0.85 stars</span></td></tr>
+          <tr><td>Overall hospital rating (0–100)</td><td>84.78</td><td>88.03</td><td><span class="badge badge-yellow">−3.25</span></td></tr>
+          <tr><td>Would recommend this hospital</td><td>82.90</td><td>87.06</td><td><span class="badge badge-yellow">−4.16</span></td></tr>
+          <tr><td>Nurse communication</td><td>88.84</td><td>91.28</td><td><span class="badge badge-yellow">−2.44</span></td></tr>
+          <tr><td>Doctor communication</td><td>88.71</td><td>90.78</td><td><span class="badge badge-yellow">−2.07</span></td></tr>
+          <tr><td>Discharge information quality</td><td>73.06</td><td>76.58</td><td><span class="badge badge-red">−3.52</span></td></tr>
+          <tr><td>Care transition coordination</td><td>82.72</td><td>85.84</td><td><span class="badge badge-yellow">−3.12</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="finding">Patients are not outraged — they rate their doctors and nurses reasonably well. But <strong>every single dimension scores lower</strong> at paradox hospitals. No category where they match or beat their peers. The most telling gap is discharge information at −3.52. Patients feel less prepared leaving these hospitals — and this directly mirrors the clinical finding from Layer 3: poor discharge planning is a measurable failure both in the data and in the patient's lived experience of it.</div>
+
+    <p class="layer-body" style="margin-top:1.5rem">
+      The star rating gap of 0.85 is significant on a 1–5 scale. Paradox hospitals average <strong>2.42 stars</strong> — closer to 2 than 3. Patients are quietly signaling that something is not right, even when they cannot name exactly what. The data names it for them.
+    </p>
+  </div>
+
+  <!-- LAYER 5 -->
+  <div id="l5" class="section">
+    <div class="layer-tag"><div class="layer-num">5</div>Synthesis</div>
+    <h2 class="layer-title">The full picture</h2>
+    <p class="layer-body">Four layers of evidence. One answer.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>Paradox hospitals</th><th>All others</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>Avg spending per episode</td><td>$29,059</td><td>$25,574</td><td><span class="badge badge-red">+$3,485 more</span></td></tr>
+          <tr><td>Composite outcome score</td><td>Negative</td><td>Positive</td><td><span class="badge badge-red">Underperforming</span></td></tr>
+          <tr><td>HAI infection rate</td><td>Above 1.0 on 5/6 measures</td><td>Below 1.0 on most</td><td><span class="badge badge-red">2× worse</span></td></tr>
+          <tr><td>EDAC excess days — heart failure</td><td>12.9 days</td><td>4.9 days</td><td><span class="badge badge-red">2.6× worse</span></td></tr>
+          <tr><td>EDAC excess days — pneumonia</td><td>18.0 days</td><td>5.9 days</td><td><span class="badge badge-red">3× worse</span></td></tr>
+          <tr><td>30-day readmission rates</td><td>Marginal difference</td><td>Marginal difference</td><td><span class="badge badge-yellow">Not a driver</span></td></tr>
+          <tr><td>HCAHPS star rating</td><td>2.42 / 5</td><td>3.27 / 5</td><td><span class="badge badge-red">−0.85 stars</span></td></tr>
+          <tr><td>Hospital type</td><td>100% Acute Care</td><td>Mixed types</td><td><span class="badge badge-red">Fully resourced</span></td></tr>
+          <tr><td>Ownership type</td><td>All types represented</td><td>All types</td><td><span class="badge badge-yellow">No ownership pattern</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-divider">
+    <h3 class="layer-title" style="font-size:1.3rem;margin-top:0.5rem">Two archetypes</h3>
+    <div class="arch-grid">
+      <div class="arch-card arch-red">
+        <div class="arch-card-tag">The dysfunction trap</div>
+        <div class="arch-title">99 paradox hospitals</div>
+        <div class="arch-item">
+          <span class="arch-dot"></span>Fully equipped Acute Care facility<br>
+          <span class="arch-dot"></span>Spends $3,485 more per patient<br>
+          <span class="arch-dot"></span>HAI rates 2× higher than peers<br>
+          <span class="arch-dot"></span>Patients stay 2–3× longer than expected<br>
+          <span class="arch-dot"></span>Infections compound the extended stay<br>
+          <span class="arch-dot"></span>Patients leave unstabilized<br>
+          <span class="arch-dot"></span>Post-discharge costs surge<br>
+          <span class="arch-dot"></span>Star rating: 2.42 / 5
+        </div>
+      </div>
+      <div class="arch-card arch-green">
+        <div class="arch-card-tag">The efficient performer</div>
+        <div class="arch-title">The benchmark</div>
+        <div class="arch-item">
+          <span class="arch-dot"></span>Same hospital type, better processes<br>
+          <span class="arch-dot"></span>Spending at or below national average<br>
+          <span class="arch-dot"></span>Infections below national benchmark<br>
+          <span class="arch-dot"></span>Patients discharged on time<br>
+          <span class="arch-dot"></span>Discharge planning starts day one<br>
+          <span class="arch-dot"></span>Care transitions are coordinated<br>
+          <span class="arch-dot"></span>Patients go home — not to SNF<br>
+          <span class="arch-dot"></span>Star rating: 3.27 / 5
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+    <div class="mechanism">
+      <h3>The mechanism — how dysfunction generates cost</h3>
+      <div class="mech-step"><div class="mech-num">1</div><div>Poor care coordination → patient stays longer than clinically necessary</div></div>
+      <div class="mech-arrow">↓</div>
+      <div class="mech-step"><div class="mech-num">2</div><div>Extended stay → increased infection exposure (HAI rates 2× worse)</div></div>
+      <div class="mech-arrow">↓</div>
+      <div class="mech-step"><div class="mech-num">3</div><div>Hospital-acquired infection → complications, treatment required, stay extends further</div></div>
+      <div class="mech-arrow">↓</div>
+      <div class="mech-step"><div class="mech-num">4</div><div>Hospital legally cannot discharge an unstable patient — it must treat what it caused</div></div>
+      <div class="mech-arrow">↓</div>
+      <div class="mech-step"><div class="mech-num">5</div><div>Poor discharge planning → patient leaves without proper stabilization or transition plan</div></div>
+      <div class="mech-arrow">↓</div>
+      <div class="mech-step"><div class="mech-num">6</div><div>Within 30 days: readmission (+$1,066) or skilled nursing facility (+$974)</div></div>
+      <div class="mech-arrow">↓</div>
+      <div class="mech-step"><div class="mech-num">7</div><div>Worse clinical outcome. Higher spending. Lower patient satisfaction. The cycle repeats.</div></div>
+    </div>
+
+    <div class="pull-quote">
+      "The hospitals that spend the most on dysfunction are the hospitals that invest the least in process. The spending is not the cause of poor outcomes — it is the financial cost of them."
+    </div>
+
+    <h3 class="layer-title" style="font-size:1.3rem">The answer</h3>
+    <p class="layer-body">
+      <strong>Spending does not drive outcomes. Process quality does.</strong>
+    </p>
+    <p class="layer-body">
+      The 99 paradox hospitals spend $3,485 more per patient not because they are investing in better care — but because their internal process failures generate cascading costs that no amount of money can retroactively fix. The correlation between spending and outcomes is 0.24. Seventy-six percent of what determines whether a hospital performs well has nothing to do with its budget.
+    </p>
+    <p class="layer-body">
+      These hospitals are not treating sicker patients. They are all Acute Care facilities, spread across all ownership types, concentrated in smaller states that are not known for high-complexity medical hubs. The case mix counter-argument fails at every layer of this analysis.
+    </p>
+    <p class="layer-body">
+      The problem is operational. And it is a policy problem hiding in plain sight inside the CMS data — data that was always there to be read.
+    </p>
+
+    <div class="prose-block" style="margin-top:2rem">
+      <strong>Limitations and future work:</strong> This analysis cannot confirm patient volume, staffing levels, or internal discharge planning records — data not available in the CMS public dataset. The why behind the extended stays points to process failures, but a complete causal explanation would require hospital-level operational data. Future layers of this project will investigate geographic clustering, timeliness of care measures, and whether CMS penalty exposure correlates with paradox hospital status.
+    </div>
+  </div>
+
+  <footer>
+    <span>Fatima Zahra Boutkhil — Data Analyst in the Making</span>
+    <span>Data: CMS Hospital Compare API · cms-hospital-analyzer</span>
+  </footer>
+
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
